@@ -1,14 +1,14 @@
-name: Deploy MkDocs site to GitHub Pages
+name: WaxDau Deploy MkDocs site to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main 
   pull_request:
     branches:
       - main
 
-jobs:
+jobs:own chain creator
   build:
     runs-on: ubuntu-latest
     steps:
