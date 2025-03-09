@@ -1,0 +1,20 @@
+name: WaxDaU site CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the site in the WAXDAU/builder container
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/WAXDAU -v ${{ github.workspace }}/_site:/srv/WAXDAU/_site \
+        WAXDAU/builder:latest /bin/bash -c "chmod -R 777 /srv/WAXDAU && jekyll build --future"
